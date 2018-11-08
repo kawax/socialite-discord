@@ -64,7 +64,7 @@ https://discordapp.com/developers/docs/topics/oauth2#shared-resources-oauth2-sco
     public function login()
     {
         return Socialite::driver('discord')
-                        ->setScopes(['identify', 'email', 'guilds'])
+                        ->setScopes(['identify', 'email', 'guilds', 'guilds.join'])
                         ->redirect();
     }
 ```
