@@ -3,45 +3,22 @@
 namespace Tests;
 
 use Mockery as m;
-use PHPUnit\Framework\TestCase;
 
 use Illuminate\Http\Request;
-use Laravel\Socialite\SocialiteManager;
+use Laravel\Socialite\Facades\Socialite;
 
 use Revolution\Socialite\Discord\DiscordProvider;
 
 class SocialiteTest extends TestCase
 {
-    /**
-     * @var SocialiteManager
-     */
-    protected $socialite;
-
-    public function setUp()
-    {
-        parent::setUp();
-
-        $app = ['request' => Request::create('foo')];
-
-        $this->socialite = new SocialiteManager($app);
-
-        $this->socialite->extend('discord', function ($app) {
-            return $this->socialite->buildProvider(DiscordProvider::class, [
-                'client_id'     => 'test',
-                'client_secret' => 'test',
-                'redirect'      => 'https://localhost',
-            ]);
-        });
-    }
-
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }
 
     public function testInstance()
     {
-        $provider = $this->socialite->driver('discord');
+        $provider = Socialite::driver('discord');
 
         $this->assertInstanceOf(DiscordProvider::class, $provider);
     }

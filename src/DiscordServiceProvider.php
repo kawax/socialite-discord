@@ -2,10 +2,10 @@
 
 namespace Revolution\Socialite\Discord;
 
-use Laravel\Socialite\SocialiteServiceProvider;
+use Illuminate\Support\ServiceProvider;
 use Laravel\Socialite\Facades\Socialite;
 
-class DiscordServiceProvider extends SocialiteServiceProvider
+class DiscordServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the service provider.
@@ -14,10 +14,13 @@ class DiscordServiceProvider extends SocialiteServiceProvider
      */
     public function boot()
     {
-        Socialite::extend('discord', function ($app) {
-            $config = $app['config']['services.discord'];
+        Socialite::extend(
+            'discord',
+            function ($app) {
+                $config = $app['config']['services.discord'];
 
-            return Socialite::buildProvider(DiscordProvider::class, $config);
-        });
+                return Socialite::buildProvider(DiscordProvider::class, $config);
+            }
+        );
     }
 }

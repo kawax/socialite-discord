@@ -2,6 +2,9 @@
 
 https://discordapp.com/developers/docs/topics/oauth2
 
+## Requirements
+- PHP >= 7.2
+
 ## Installation
 ```
 composer require revolution/socialite-discord
