@@ -3,7 +3,7 @@
 https://discordapp.com/developers/docs/topics/oauth2
 
 ## Requirements
-- PHP >= 7.2
+- PHP >= 7.4
 
 ## Installation
 ```
