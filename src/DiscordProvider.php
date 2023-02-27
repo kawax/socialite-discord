@@ -35,7 +35,7 @@ class DiscordProvider extends AbstractProvider implements ProviderInterface
      */
     protected function getAuthUrl($state): string
     {
-        $url = $this->endpoint . 'oauth2/authorize';
+        $url = $this->endpoint.'oauth2/authorize';
 
         return $this->buildAuthUrlFromBase($url, $state);
     }
@@ -45,7 +45,7 @@ class DiscordProvider extends AbstractProvider implements ProviderInterface
      */
     protected function getTokenUrl(): string
     {
-        return $this->endpoint . 'oauth2/token';
+        return $this->endpoint.'oauth2/token';
     }
 
     /**
@@ -54,9 +54,9 @@ class DiscordProvider extends AbstractProvider implements ProviderInterface
     protected function getUserByToken($token)
     {
         $response = $this->getHttpClient()
-                         ->get($this->endpoint . 'users/@me', [
+                         ->get($this->endpoint.'users/@me', [
                              'headers' => [
-                                 'Authorization' => 'Bearer ' . $token,
+                                 'Authorization' => 'Bearer '.$token,
                              ],
                          ]);
 
@@ -69,11 +69,11 @@ class DiscordProvider extends AbstractProvider implements ProviderInterface
     protected function mapUserToObject(array $user): User
     {
         return (new User())->setRaw($user)->map([
-            'id'       => $user['id'],
+            'id' => $user['id'],
             'nickname' => sprintf('%s#%s', $user['username'], $user['discriminator']),
-            'name'     => $user['username'],
-            'email'    => $user['email'] ?? null,
-            'avatar'   => is_null($user['avatar']) ? null :
+            'name' => $user['username'],
+            'email' => $user['email'] ?? null,
+            'avatar' => is_null($user['avatar']) ? null :
                 sprintf('https://cdn.discordapp.com/avatars/%s/%s.jpg', $user['id'], $user['avatar']),
         ]);
     }
