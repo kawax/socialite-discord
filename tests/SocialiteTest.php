@@ -2,11 +2,9 @@
 
 namespace Tests;
 
-use Mockery as m;
-
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
-
+use Mockery as m;
 use Revolution\Socialite\Discord\DiscordProvider;
 
 class SocialiteTest extends TestCase
