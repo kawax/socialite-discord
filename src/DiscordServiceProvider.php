@@ -9,18 +9,11 @@ class DiscordServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the service provider.
-     *
-     * @return void
      */
-    public function boot()
+    public function boot(): void
     {
-        Socialite::extend(
-            'discord',
-            function ($app) {
-                $config = $app['config']['services.discord'];
-
-                return Socialite::buildProvider(DiscordProvider::class, $config);
-            }
+        Socialite::extend('discord',
+            fn ($app) => Socialite::buildProvider(DiscordProvider::class, $app['config']['services.discord'])
         );
     }
 }

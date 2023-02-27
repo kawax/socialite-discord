@@ -3,7 +3,7 @@
 https://discordapp.com/developers/docs/topics/oauth2
 
 ## Requirements
-- PHP >= 7.4
+- PHP >= 8.0
 
 ## Installation
 ```
@@ -41,7 +41,7 @@ SocialiteController
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Socialite;
+use Laravel\Socialite\Facades\Socialite;
 
 class SocialiteController extends Controller
 {

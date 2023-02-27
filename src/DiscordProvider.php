@@ -21,7 +21,7 @@ class DiscordProvider extends AbstractProvider implements ProviderInterface
     /**
      * @var string
      */
-    protected $endpoint = 'https://discordapp.com/api/';
+    protected string $endpoint = 'https://discordapp.com/api/';
 
     /**
      * The separating character for the requested scopes.
@@ -33,7 +33,7 @@ class DiscordProvider extends AbstractProvider implements ProviderInterface
     /**
      * {@inheritdoc}
      */
-    protected function getAuthUrl($state)
+    protected function getAuthUrl($state): string
     {
         $url = $this->endpoint . 'oauth2/authorize';
 
@@ -43,7 +43,7 @@ class DiscordProvider extends AbstractProvider implements ProviderInterface
     /**
      * {@inheritdoc}
      */
-    protected function getTokenUrl()
+    protected function getTokenUrl(): string
     {
         return $this->endpoint . 'oauth2/token';
     }
@@ -66,7 +66,7 @@ class DiscordProvider extends AbstractProvider implements ProviderInterface
     /**
      * {@inheritdoc}
      */
-    protected function mapUserToObject(array $user)
+    protected function mapUserToObject(array $user): User
     {
         return (new User())->setRaw($user)->map([
             'id'       => $user['id'],
@@ -81,7 +81,7 @@ class DiscordProvider extends AbstractProvider implements ProviderInterface
     /**
      * {@inheritdoc}
      */
-    protected function getTokenFields($code)
+    protected function getTokenFields($code): array
     {
         return array_merge(parent::getTokenFields($code), [
             'grant_type' => 'authorization_code',
