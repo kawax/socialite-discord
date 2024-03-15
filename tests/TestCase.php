@@ -30,12 +30,11 @@ class TestCase extends \Orchestra\Testbench\TestCase
      */
     protected function getEnvironmentSetUp($app)
     {
-        $app['config']->set(
-            'services.discord',
+        $app['config']->set('services.discord',
             [
-                'client_id'     => 'test',
+                'client_id' => 'test',
                 'client_secret' => 'test',
-                'redirect'      => 'http://localhost',
+                'redirect' => 'http://localhost',
             ]
         );
     }

@@ -5,6 +5,8 @@ https://discordapp.com/developers/docs/topics/oauth2
 ## Requirements
 - PHP >= 8.0
 
+> No version restrictions. It may stop working in future versions.
+
 ## Installation
 ```
 composer require revolution/socialite-discord
@@ -12,7 +14,7 @@ composer require revolution/socialite-discord
 
 ### config/services.php
 
-```
+```php
     'discord' => [
         'client_id'     => env('DISCORD_CLIENT_ID'),
         'client_secret' => env('DISCORD_CLIENT_SECRET'),
@@ -30,9 +32,9 @@ DISCORD_REDIRECT=
 ## Usage
 
 routes/web.php
-```
-Route::get('login', 'SocialiteController@login');
-Route::get('callback', 'SocialiteController@callback');
+```php
+Route::get('login', [SocialiteController::class, 'login']);
+Route::get('callback', [SocialiteController::class, 'callback']);
 ```
 
 SocialiteController
@@ -56,7 +58,6 @@ class SocialiteController extends Controller
         dd($user);
     }
 }
-
 ```
 
 ## Scopes
