@@ -13,8 +13,6 @@
     "laravel/socialite": "*"
   },
   "require-dev": {
-    "phpunit/phpunit": "^10.5",
-    "mockery/mockery": "^1.3",
     "orchestra/testbench": "^9.0"
   },
   "autoload": {
