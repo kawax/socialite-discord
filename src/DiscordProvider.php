@@ -18,9 +18,6 @@ class DiscordProvider extends AbstractProvider implements ProviderInterface
         'email',
     ];
 
-    /**
-     * @var string
-     */
     protected string $endpoint = 'https://discordapp.com/api/';
 
     /**
@@ -54,11 +51,11 @@ class DiscordProvider extends AbstractProvider implements ProviderInterface
     protected function getUserByToken($token)
     {
         $response = $this->getHttpClient()
-                         ->get($this->endpoint.'users/@me', [
-                             'headers' => [
-                                 'Authorization' => 'Bearer '.$token,
-                             ],
-                         ]);
+            ->get($this->endpoint.'users/@me', [
+                'headers' => [
+                    'Authorization' => 'Bearer '.$token,
+                ],
+            ]);
 
         return json_decode($response->getBody(), true);
     }
@@ -68,7 +65,7 @@ class DiscordProvider extends AbstractProvider implements ProviderInterface
      */
     protected function mapUserToObject(array $user): User
     {
-        return (new User())->setRaw($user)->map([
+        return (new User)->setRaw($user)->map([
             'id' => $user['id'],
             'nickname' => sprintf('%s#%s', $user['username'], $user['discriminator']),
             'name' => $user['global_name'] ?? $user['username'],
