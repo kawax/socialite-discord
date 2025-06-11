@@ -74,7 +74,7 @@ https://discordapp.com/developers/docs/topics/oauth2#shared-resources-oauth2-sco
 ```
 
 ## Demo
-https://github.com/kawax/socialite-project
+https://github.com/invokable/socialite-project
 
 ## LICENCE
 MIT
