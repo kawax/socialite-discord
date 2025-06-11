@@ -2,6 +2,10 @@
 
 https://discordapp.com/developers/docs/topics/oauth2
 
+## Overview
+
+This package provides a Discord OAuth2 provider for Laravel Socialite. It allows Laravel applications to authenticate users via their Discord accounts by integrating with Discord's OAuth2 API.
+
 ## Requirements
 - PHP >= 8.0
 
